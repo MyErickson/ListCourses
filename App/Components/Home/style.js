@@ -15,6 +15,15 @@ export default StyleSheet.create({
         width:250
         
     },
-    
+    image:{
+        height:30,
+        width:30,
+        marginHorizontal:5
+
+    },
+    viewImage:{
+        flexDirection:"row"
+
+    }
 
 });
