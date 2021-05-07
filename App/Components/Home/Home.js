@@ -1,13 +1,89 @@
-import React , { useState ,useEffect} from 'react'
+import React , { useState } from 'react'
 
-import { View} from 'react-native'
+import Head from '../Header/Head'
+import ModalUpdateArticle from "../ModalUpdateArticle/ModalUpdateArticle"
 
+import { View , ScrollView,Text ,Pressable , Image} from 'react-native'
+import {Input  } from 'react-native-elements'
+
+import styles from './style'
 
 const Home = (props) => {
+    const [lists,setListes] = useState(["Orange", "Pomme", "Fraise", "Kiwi","Fruit du dragon"])
+    const [newArticle, setNewArticle] = useState("")
+    const [ visible, setVisible] = useState(false)
+    const [targetArticle, setTargetArticle] = useState({})
+
+    const handleChange =(evt)=>{
+        const { text } = evt.nativeEvent;
+        setNewArticle(text)
+    }
+
+    const listSubmit =()=>{
+        setListes([...lists,newArticle])
+        setNewArticle("")
+    }
+
+    const handleDelete=(value)=>{
+        const newList = lists.filter(list=> list !== value)
+        setListes(newList)
+    }
+
+    const handleUpdateArticle=(index,value)=>{
+        setTargetArticle({index:index,produit:value})
+        setVisible(true)
+    }
+
+    const updateArticle=(newArticle,oldArticle)=>{
+        const newList = lists.map((list,index)=> index === oldArticle ? newArticle : list)
+        setListes(newList)
+        
+    }
+    const closeModal=()=>{
+        setVisible(false)
+    }
 
     return (
         <View style={{flex:1,backgroundColor:'white'}}>
- 
+             <Head  />
+            <Input
+                placeholder='Ajouter à la liste'
+                onChange={ handleChange}
+                value={newArticle}
+                onSubmitEditing={listSubmit}
+            />
+                        <ScrollView 
+             showsVerticalScrollIndicator={false}
+            >
+                { lists.map((value,index)=>{
+                    return(
+                        <View key={index} style={styles.list}>    
+                            <Text style={styles.textList}>{value}</Text>
+                            <Pressable  onPress={()=>handleUpdateArticle(index,value)}>
+                                    <Image
+                                        style={styles.image}
+                                      
+                                        source={{uri:"https://image.flaticon.com/icons/png/512/32/32355.png"}}
+                                    />
+                                </Pressable>
+
+                                <Pressable  onPress={()=>handleDelete(value)}>
+                                    <Image
+                                        style={styles.image}
+                                       
+                                        source={{uri:"https://cdn.iconscout.com/icon/premium/png-512-thumb/delete-1432400-1211078.png"}}
+                                    />
+                                </Pressable>
+                        </View>
+                   )
+                })} 
+            </ScrollView>
+            < ModalUpdateArticle 
+             visible={visible}
+             updateArticle={ updateArticle}
+             closeModal={closeModal}
+             targetArticle={targetArticle}
+           />
         </View>
     )
 }
