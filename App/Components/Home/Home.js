@@ -1,6 +1,7 @@
-import React , { useState ,useEffect} from 'react'
+import React , { useState } from 'react'
 
 import Head from '../Header/Head'
+import ModalUpdateArticle from "../ModalUpdateArticle/ModalUpdateArticle"
 
 import { View , ScrollView,Text ,Pressable , Image} from 'react-native'
 import {Input  } from 'react-native-elements'
@@ -10,6 +11,8 @@ import styles from './style'
 const Home = (props) => {
     const [lists,setListes] = useState(["Orange", "Pomme", "Fraise", "Kiwi","Fruit du dragon"])
     const [newArticle, setNewArticle] = useState("")
+    const [ visible, setVisible] = useState(false)
+    const [targetArticle, setTargetArticle] = useState({})
 
     const handleChange =(evt)=>{
         const { text } = evt.nativeEvent;
@@ -24,6 +27,20 @@ const Home = (props) => {
     const handleDelete=(value)=>{
         const newList = lists.filter(list=> list !== value)
         setListes(newList)
+    }
+
+    const handleUpdateArticle=(index,value)=>{
+        setTargetArticle({index:index,produit:value})
+        setVisible(true)
+    }
+
+    const updateArticle=(newArticle,oldArticle)=>{
+        const newList = lists.map((list,index)=> index === oldArticle ? newArticle : list)
+        setListes(newList)
+        
+    }
+    const closeModal=()=>{
+        setVisible(false)
     }
 
     return (
@@ -42,7 +59,7 @@ const Home = (props) => {
                     return(
                         <View key={index} style={styles.list}>    
                             <Text style={styles.textList}>{value}</Text>
-                            <Pressable  onPress={()=>{}}>
+                            <Pressable  onPress={()=>handleUpdateArticle(index,value)}>
                                     <Image
                                         style={styles.image}
                                       
@@ -61,7 +78,12 @@ const Home = (props) => {
                    )
                 })} 
             </ScrollView>
- 
+            < ModalUpdateArticle 
+             visible={visible}
+             updateArticle={ updateArticle}
+             closeModal={closeModal}
+             targetArticle={targetArticle}
+           />
         </View>
     )
 }
