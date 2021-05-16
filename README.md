@@ -5,16 +5,16 @@ Une application de liste de course en React-native (android)
 
 Fonctionnalité de l'application:
 - Afficher la liste d'une course
-- Ajouter un nouveau produit a la liste de course
+- Ajouter un nouveau produit à la liste de course
 - Supprimer un produit de la liste de course
 - Modifier un produit de la liste de course
 
 ## Installation
 
-1. Apres avoir recuperer le lien du repo github , utiliser la commande "yarn" pour installer le fichier node-module qui installera les package du projet
+1. Apres avoir récuperer le lien du repo github , utiliser la commande "yarn" pour installer le fichier node-module qui installera les package du projet
 2. Pour lancer l'application : "yarn android" 
 
-## Packages utilisez dans l'application
+## Packages utilisé dans l'application
 
 packages UI : 
 - React native elements : https://reactnativeelements.com/
