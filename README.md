@@ -9,10 +9,16 @@ Fonctionnalité de l'application:
 - Supprimer un produit de la liste de course
 - Modifier un produit de la liste de course
 
-## Installation
+## Installation & Utilisation
 
+Instalation : 
 1. Apres avoir récuperer le lien du repo github , utiliser la commande "yarn" pour installer le fichier node-module qui installera les package du projet
 2. Pour lancer l'application : "yarn android" 
+
+Utilisation : 
+- L'ajout d'un nouveau produit dans la liste s'effectue dans la barre d'input
+- La suppression d'un produit se fait en touchant l'image represantant une poubelle
+- La modification d'un produit se fait en touchant l'image represantant une feuille de liste
 
 ## Packages utilisé dans l'application
 
