@@ -31,3 +31,5 @@ autre packages :
 - react-native-responsive-screen : https://www.npmjs.com/package/react-native-responsive-screen
 - react-native-gesture-handler : https://github.com/software-mansion/react-native-gesture-handler
 - react-native-safe-area-context: https://github.com/th3rdwave/react-native-safe-area-context
+- react-navigation : https://reactnavigation.org/
+- react-navigation-stack: https://www.npmjs.com/package/react-navigation-stack
