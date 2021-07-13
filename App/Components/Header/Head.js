@@ -10,7 +10,7 @@ const Head = () => {
     return (
         <View style={{backgroundColor:'white'}}>
             <Header
-                containerStyle={{bottom:-0.2}}
+                containerStyle={{bottom:-0.1}}
                 backgroundColor='#141415'
                 centerComponent={ <Text style={{color:"white"}}>Mes courses</Text>}
             />
