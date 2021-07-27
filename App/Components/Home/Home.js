@@ -24,8 +24,8 @@ const Home = (props) => {
         setNewArticle("")
     }
 
-    const handleDelete=(value)=>{
-        const newList = lists.filter(list=> list !== value)
+    const handleDelete=(index)=>{
+        const newList = lists.filter((_,indexList)=> indexList !== index)
         setListes(newList)
     }
 
@@ -67,7 +67,7 @@ const Home = (props) => {
                                     />
                                 </Pressable>
 
-                                <Pressable  onPress={()=>handleDelete(value)}>
+                                <Pressable  onPress={()=>handleDelete(index)}>
                                     <Image
                                         style={styles.image}
                                        
