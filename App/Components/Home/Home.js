@@ -1,11 +1,9 @@
 import React , { useState } from 'react'
-
 import Head from '../Header/Head'
 import ModalUpdateArticle from "../ModalUpdateArticle/ModalUpdateArticle"
-
 import { View , ScrollView,Text ,Pressable , Image} from 'react-native'
 import {Input  } from 'react-native-elements'
-
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import styles from './style'
 
 const Home = (props) => {
@@ -27,6 +25,7 @@ const Home = (props) => {
     const handleDelete=(index)=>{
         const newList = lists.filter((_,indexList)=> indexList !== index)
         setListes(newList)
+        console.log(newList)
     }
 
     const handleUpdateArticle=(index,value)=>{
@@ -59,6 +58,7 @@ const Home = (props) => {
                     return(
                         <View key={index} style={styles.list}>    
                             <Text style={styles.textList}>{value}</Text>
+                            <BouncyCheckbox fillColor="green" onPress={(isChecked: boolean) => {}} />
                             <Pressable  onPress={()=>handleUpdateArticle(index,value)}>
                                     <Image
                                         style={styles.image}
@@ -70,7 +70,6 @@ const Home = (props) => {
                                 <Pressable  onPress={()=>handleDelete(index)}>
                                     <Image
                                         style={styles.image}
-                                       
                                         source={{uri:"https://cdn.iconscout.com/icon/premium/png-512-thumb/delete-1432400-1211078.png"}}
                                     />
                                 </Pressable>
