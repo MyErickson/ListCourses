@@ -21,6 +21,7 @@ const Home = (props) => {
   const handleChange = (evt) => {
     const { text } = evt.nativeEvent;
     setNewArticle(text);
+    console.log(text);
   };
 
   const listSubmit = () => {
